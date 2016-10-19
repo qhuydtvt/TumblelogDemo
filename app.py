@@ -3,20 +3,8 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-post1 = {
-    "title" : "Good day",
-    "content": "Today I met a girl. She had black eyes and loves ice-cream"
-}
 
-post2 = {
-    "title": "Bad day",
-    "content": "Today, she did show up and I felt more lonely than ever"
-}
-
-print(post1["title"])
-print(post1["content"])
-
-posts = [post1, post2]
+posts = []
 
 @app.route('/')
 def main():
@@ -36,4 +24,17 @@ def add_post():
     return "OK"
 
 if __name__ == '__main__':
+    global posts
+    post1 = {
+        "title": "Good day",
+        "content": "Today I met a girl. She had black eyes and loves ice-cream"
+    }
+
+    post2 = {
+        "title": "Bad day",
+        "content": "Today, she did show up and I felt more lonely than ever"
+    }
+
+    print(post1["title"])
+    print(post1["content"])
     app.run()
