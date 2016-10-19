@@ -4,6 +4,7 @@ import json
 from flask import *
 
 app = Flask(__name__)
+mlab_connect()
 
 class Post(Document):
     title = StringField()
@@ -13,8 +14,7 @@ class Post(Document):
 
 @app.route('/')
 def main():
-    posts = Post.objects
-    return jsonify([post.get_json() for post in posts])
+    return jsonify([post.get_json() for post in Post.objects])
 
 @app.route('/addpost', methods=["POST"])
 def add_post():
@@ -26,5 +26,4 @@ def add_post():
     return jsonify({"code": 1, "message": "OK"})
 
 if __name__ == '__main__':
-    mlab_connect()
     app.run()
